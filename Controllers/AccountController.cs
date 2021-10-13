@@ -66,15 +66,17 @@ namespace DotNetBankAPI_1.Controllers
             {
                 //this account type is not present so it should be the Savings account
                 //so add it
-                var statusTobeAdded = new Status();
-                statusTobeAdded.AccountId = status.FirstOrDefault().AccountId;
-                statusTobeAdded.AccountType = "S";
-                statusTobeAdded.CustomerId = model.CustomerID;
-                statusTobeAdded.SsnId = status.FirstOrDefault().SsnId;
-                statusTobeAdded.Status1 = "Added the Savings Account!";
-                statusTobeAdded.Balance = model.Deposit;
-                statusTobeAdded.Message = $"Added the savings account on {DateTime.Now.Date}";
-                statusTobeAdded.LastUpdated = DateTime.Now;
+                var statusTobeAdded = new Status{
+                    AccountId = status.FirstOrDefault().AccountId,
+                AccountType = "S",
+                CustomerId = model.CustomerID,
+                SsnId = status..FirstOrDefault().ssnId,
+                Status1 = "Added the Savings Account!",
+                Balance = model.Deposit,
+                Message = $"Added the savings account on {DateTime.Now.Date}",
+                LastUpdated = DateTime.Now;
+                };
+
                 _context.Status.Add(statusTobeAdded);
                 _context.SaveChanges();
                 return Ok(statusTobeAdded);
